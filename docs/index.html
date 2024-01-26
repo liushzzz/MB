@@ -168,7 +168,7 @@
 <body>
 <div class="container">
   <div id="content" class="container-fluid d-flex flex-column align-items-center gap-3">
-    <h1 class="text-nowrap mt-5">🏆 MathBench Leaderboard (EN) 🏆</h1>
+    <h1 class="text-nowrap mt-5">🏆 MathBench Leaderboard 🏆</h1>
     <h3 class="fw-light text-nowrap"><small id="warning">MathBench: A Comprehensive Multi-Level Difficulty Mathematics Evaluation Dataset<br></small></h3>
     <div style="clear: both">
       <div class="paper-btn-parent">
@@ -203,8 +203,9 @@
         <h4>📝 Notes</h4>
         <p class="inline-block mt-3">
           <ol>
-            <li>Models labeled with 🌍 are API-Based models, while others are open-sourced.</li>
-            <li>Feel free to <a href="https://github.com/open-compass/MathBench/issues/new">file a request</a> to add your models on our leaderboard via open-compass. </li>
+            <li>Models labeled with 🌍 are API-Based models, while others are open-sourced. </li>
+            <li>Models labeled with 🧮 are Mathematics-Specialization models, while others are normal Chat models. </li>
+            <li>Feel free to <a href="https://github.com/open-compass/MathBench/issues/new">file a request</a> to add your models on our leaderboard. </li>
           </ol>
         </p>
       </div>
@@ -437,9 +438,15 @@
         modelCell.classList.add('d-flex');
         modelCell.classList.add('flex-nowrap');
         var opensourced = row['opensourced'];
+        var mathmodel = row['mathLM'];
         if (opensourced == 'FALSE') {
           var promptedSymbol = document.createElement('span');
           promptedSymbol.textContent = '🌍';
+          modelCell.appendChild(promptedSymbol);
+        }
+        if (mathmodel == 'TRUE') {
+          var promptedSymbol = document.createElement('span');
+          promptedSymbol.textContent = '🧮';
           modelCell.appendChild(promptedSymbol);
         }
         dataRow.appendChild(modelCell);
