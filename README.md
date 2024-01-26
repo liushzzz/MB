@@ -50,6 +50,9 @@ Here is the overall average result of **MathBench**:
 | chatglm3-6b-hf         | 17.41      | 33.80       |
 | mammoth-7b             | 9.56       | 22.96       |
 | mammoth-13b            | 16.11      | 31.22       |
+| GPT-3.5-turbo          | 31.45      | 52.04       |
+| GPT-4                  | 52.85      | 70.48       |
+
 
 
 Here is the CE result of **MathBench** with 5-level difficulty divisions:
@@ -79,18 +82,22 @@ Here is the CE result of **MathBench** with 5-level difficulty divisions:
 ## Inference MathBench with OpenCompass
 [OpenCompass](https://github.com/open-compass/opencompass) is a toolkit for evaluating the performance of large language models (LLMs). There are steps for inference MathBench with OpenCompass:
 1. Install OpenCompass
-```conda create --name opencompass python=3.10 pytorch torchvision pytorch-cuda -c nvidia -c pytorch -y
+```
+conda create --name opencompass python=3.10 pytorch torchvision pytorch-cuda -c nvidia -c pytorch -y
 conda activate opencompass
 git clone https://github.com/open-compass/opencompass opencompass
 cd opencompass
 pip install -e .
 ```
 2. Prepare the dataset
-```# Download dataset from release file and copy to data/ folder
+```
+# Download dataset from release file and copy to data/ folder
+mkdir data
 cp -rf mathbench ./data/ 
 ```
 3. Inference MathBench
-```# Inference MathBench with hf_llama2_7b_chat model
+```
+# Inference MathBench with hf_llama2_7b_chat model
 python run.py --models hf_llama2_7b_chat --datasets mathbench_gen
 ```
 You can also evaluate HuggingFace models via command line. 
